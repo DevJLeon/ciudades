@@ -1,0 +1,14 @@
+{
+  "name": "gestor_de_ciudades",
+  "version": "1.0.0",
+  "description": "gestor_de_ciudades",
+  "main": "index.js",
+  "scripts": {
+    "server": "json-server --watch db.json"
+  },
+  "author": "Jhosep Deangelo Pulido Plata",
+  "license": "ISC",
+  "dependencies": {
+    "json-server": "^0.17.3"
+  }
+}

@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Gestor de Ciudades</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="src/assets/Style/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+</head>
+
+<body id="body" class="bg-light">
+  <!--#region navbar -->
+  <header>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-black fixed-top " id="nav">
+      <div class="container justify-content-center align-items-center">
+          <a class="navbar-brand" href="#"><span><img style="width: 50px; height: 50px;" src="src/assets/imgs/cloudy.png" alt="weather"></span>Gestor de Ciudades</a>
+          <div id="btn1" onclick="cambiar_body(`bg-dark`,`bg-light`)" style="border-radius: 8px;" class="me-2 bg-light">
+            <img style="margin:3px;width: 15px; height: 15px;" src="src/assets/imgs/sunny.png" alt="sun">
+          </div>
+          <div id="btn2" onclick="cambiar_body(`bg-light`,`bg-dark`)" style="border-radius: 8px;" class="bg-light">
+            <img style="margin:3px;width: 15px; height: 15px;" src="src/assets/imgs/waning-moon.png" alt="moon">
+          </div>
+      </div>
+    </nav>
+  </header>
+  <script>
+    let body = document.getElementById("body");
+    let nav = document.createElement("nav");
+    function cambiar_body(old,new_c) {
+      body.classList.replace(old,new_c);
+    }
+  </script>
+  <!--#endregion -->
+
+    <!--#region modals -->
+      <!--#region Edit Modal  -->
+        <div class="modal fade" id="Edit_Departamento" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
+              <div class="modal-content p-3">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="modalTitleId">Editar Departamento</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <form class="m-3" id="Edit_Departamento_form">
+                    <div class="mb-3">
+                      <select class="form-select form-select-lg" name="Edit_Departamento_Selector" id="Edit_Departamento_Selector"></select>
+                    </div>
+                    <div class="input-group pt-3 ">
+                        <span class="input-group-text"><img src="src/assets/imgs/path.png" alt="path" style="width: 25px;height: 25px;" ></span>
+                        <input required type="text" class="form-control" placeholder="Nuevo nombre del Departamento" aria-describedby="identification">
+                    </div>
+                    <div class="container d-flex justify-content-center">
+                        <button type="submit" class="btn m-3 btn-light">Submit</button>
+                    </div>
+                </form>
+              </div>
+          </div>
+      </div>
+
+      <div class="modal fade" id="Edit_Ciudad" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
+              <div class="modal-content p-3">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="modalTitleId">Editar Ciudad</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <form class="m-3" id="Edit_Ciudad_form">
+
+                    <div class="mb-3">
+                      <select class="form-select form-select-lg" name="Edit_Ciudad_Selector" id="Edit_Ciudad_Selector"></select>
+                    </div>
+
+                    <div class="input-group pt-3 mb-3">
+                      <span class="input-group-text"><img src="src/assets/imgs/city.png" alt="city" style="width: 25px;height: 25px;" ></span>
+                      <input required type="text" class="form-control" placeholder="Nombre de la ciudad" aria-describedby="identification">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <input required type="number" class="form-control" placeholder="Latitud" id="Latitud" aria-label="Latitud">
+                        <input required type="number" class="form-control" placeholder="Longitud" id="Longitud" aria-label="Longitud">
+                    </div>
+
+                    <div class="input-group">
+                        <input  type="text" class="form-control" placeholder="URL de la imagen" id="Img path" aria-describedby="Img path">
+                    </div>
+
+                    <div class="container d-flex justify-content-center">
+                        <button type="submit" class="btn m-3 btn-light">Submit</button>
+                    </div>
+
+                </form>
+              </div>
+          </div>
+      </div>
+      <!--#endregion -->
+
+      <!--#region Delete Modals -->
+      <div class="modal fade" id="Delete_Departamento" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="modalTitleId">Borrar Departamento</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <form id="Delete_Departamento_form">
+                      <div class="modal-body">
+                          <div class="mb-3">
+                              <label for="Delete_Departamento_Selector" class="form-label">Departamento</label>
+                              <select class="form-select form-select-lg" name="Delete_Departamento_Selector" id="Delete_Departamento_Selector"></select>
+                          </div>
+                      </div>
+                      <div class="modal-footer d-flex justify-content-center"><button type="submit" class="btn btn-primary">Confirm</button></div>
+                  </form>
+              </div>
+          </div>
+      </div>
+
+      <div class="modal fade" id="Delete_Ciudad" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitleId">Borrar Ciudad</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="Delete_Ciudad_form">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="Delete_Ciudad_Selector" class="form-label">Ciudad</label>
+                            <select class="form-select form-select-lg" name="Delete_Ciudad_Selector" id="Delete_Ciudad_Selector"></select>
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center"><button type="submit" class="btn btn-primary">Confirm</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+      <!--#endregion -->
+
+      <!--#region Choose Modal -->
+      <div class="modal fade" id="Choose_Modal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="modalTitleId">Que quieres hacer?</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-footer justify-content-center d-flex">
+                    <div class="btn-group">
+                      <button type="button"  class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#Delete_Departamento" data-bs-dismiss="modal" style="width: 203px;"><img style="width: 20px; height: 20px;" src="./src/assets/imgs/left-arrow.png" alt="arrow">Borrar Departamento</button>
+                      <button type="button"  class="btn btn-success" data-bs-toggle="modal" data-bs-target="#Edit_Departamento" data-bs-dismiss="modal" style="width: 203px;">Editar Departamento<img style="width: 20px; height: 20px;" src="./src/assets/imgs/right-arrow.png" alt="arrow"></button>
+                    </div>
+                      <div class="btn-group">
+                          <button type="button"  class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#Delete_Ciudad" data-bs-dismiss="modal" style="width: 203px;"><img style="width: 20px; height: 20px;" src="./src/assets/imgs/left-arrow.png" alt="arrow">Borrar Ciudad</button>
+                          <button type="button"  class="btn btn-success" data-bs-toggle="modal" data-bs-target="#Edit_Ciudad" data-bs-dismiss="modal" style="width: 203px;">Editar Ciudad<img style="width: 20px; height: 20px;" src="./src/assets/imgs/right-arrow.png" alt="arrow"></button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!--#endregion -->
+    <!--#endregion -->
+
+  <!--#region content -->
+    <div class="container mb-5   w-100 h-100 justify-content-center">
+      <!--#region addForms -->
+        <!--#region Add_Departamento_form -->
+          <div class="container mb-5 h-25" style="background-color: #ced4da; border-radius: 12px;">
+            <form id="Add_Departamento_form">
+                <div class="input-group pt-3 ">
+                    <span class="input-group-text"><img src="src/assets/imgs/path.png" alt="path" style="width: 25px;height: 25px;" ></span>
+                    <input required type="text" class="form-control" placeholder="Nombre del Departamento" aria-describedby="identification">
+                </div>
+                <div class="container d-flex justify-content-center">
+                    <button type="submit" class="btn m-3 btn-light">Submit</button>
+                </div>
+            </form>
+          </div>
+        <!-- #endregion -->
+        <!--#region Add_Ciudad_form -->
+          <div class="container mb-5 h-25" style="background-color: #ced4da; border-radius: 12px;">
+            <form id="Add_Ciudad_form">
+                <div class="pt-3">
+                    <select class="form-select form-select-lg" name="Departamento_Selector" id="Departamento_Selector"></select>
+                </div>
+
+              <div class="input-group pt-3 mb-3">
+                  <span class="input-group-text"><img src="src/assets/imgs/city.png" alt="city" style="width: 25px;height: 25px;" ></span>
+                  <input required type="text" class="form-control" placeholder="Nombre de la ciudad" aria-describedby="identification">
+              </div>
+
+              <div class="input-group mb-3">
+                  <input required type="number" class="form-control" placeholder="Latitud" id="Latitud" aria-label="Latitud">
+                  <input required type="number" class="form-control" placeholder="Longitud" id="Longitud" aria-label="Longitud">
+              </div>
+
+              <div class="input-group">
+                  <input type="text" class="form-control" placeholder="URL de la imagen" id="Img path" aria-describedby="Img path">
+              </div>
+
+              <div class="container d-flex justify-content-center">
+                  <button type="submit" class="btn m-3 btn-light">Submit</button>
+              </div>
+            </form>
+          </div>
+        <!-- #endregion -->
+      <!--#endregion -->
+
+      <!--#region tbs -->
+          <!--#region tb-departamentos -->
+            <div class="container  mb-5 h-25" style="background-color: #ced4da; border-radius: 12px;">
+              <div class="table-responsive pt-3">
+                  <table class="table table-striped table-light">
+                      <thead>
+                          <tr style="cursor: default;">
+                              <th  scope="col">ID</th>
+                              <th style="border-left: #ced4da 1px solid;" class="text-center" scope="col">Nombre Departamento</th>
+                          </tr>
+                      </thead>
+                      <tbody id="tb_Departamentos"></tbody>
+                  </table>
+                  <small style="color:rgb(139, 4, 4)">Click en las tr para desplegar opciones</small>
+              </div>
+            </div>
+          <!--#endregion -->
+          <!--#region tb-ciudades -->
+            <div class="container  mb-5 h-25" style="background-color: #ced4da; border-radius: 12px;">
+              <div class="table-responsive pt-3">
+                  <table class="table table-striped table-light">
+                      <thead>
+                          <tr style="cursor: default;">
+                              <th scope="col">ID</th>
+                              <th scope="col">Nombre Ciudad</th>
+                              <th scope="col">Lat</th>
+                              <th scope="col">Lon</th>
+                              <th scope="col">Pertenece a</th>
+                          </tr>
+                      </thead>
+                      <tbody id="tb_Ciudades"></tbody>
+                  </table>
+                  <small style="color:rgb(139, 4, 4)">Click en las tr para desplegar opciones</small>
+              </div>
+            </div>
+          <!-- #endregion -->
+      <!--#endregion -->
+    
+      <!--#region Cards -->
+      <div class="container" >
+        <div id="card_cont" class="row pb-3 row-cols-2 row-cols-lg-5 g-2 g-lg-3" style="background-color: #ced4da;border-radius:12px">
+        </div>
+      </div>
+      <!--#endregion  -->
+    </div>
+  <!--#endregion -->
+
+  <script type="module" src="src/js/app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"ntegrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+</body>
+
+</html>

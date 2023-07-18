@@ -1,0 +1,7 @@
+header{
+  margin-bottom: 160px;
+}
+tr, #btn1, #btn2{
+  cursor: pointer;  
+}
+
